@@ -13,19 +13,18 @@ export default function AppRes({ selectedTemplate }) {
   const [editPhone, setEditPhone] = useState(phone);
   const [hasMounted, setHasMounted] = useState(false);
   const [summary, setSummary] = useState('');
-const [editSummary, setEditSummary] = useState('');
-const [experience, setExperience] = useState('');
-const [editExperience, setEditExperience] = useState('');
+  const [editSummary, setEditSummary] = useState('');
+  const [experience, setExperience] = useState('');
+  const [editExperience, setEditExperience] = useState('');
 
   useEffect(() => {
     setHasMounted(true);
-    const savedName = localStorage.getItem('name') || 'Jane Douglas';
-    const savedPosition = localStorage.getItem('position') || 'Product Manager';
-    const savedEmail = localStorage.getItem('email') || 'janed.alshammari@gmail.com';
-    const savedPhone = localStorage.getItem('phone') || '8859978644';
+    const savedName = localStorage.getItem('name') || name;
+    const savedPosition = localStorage.getItem('position') || position;
+    const savedEmail = localStorage.getItem('email') || email;
+    const savedPhone = localStorage.getItem('phone') || phone;
     const savedSummary = localStorage.getItem('summary') || 'As an experienced Product Manager, I have a proven track record of successfully launching and managing products from ideation to market. My expertise in product strategy, development, and launch has resulted in significant revenue growth for my previous employers. With strong leadership skills and the ability to collaborate cross-functionally with teams, I am confident in my ability to drive innovation and deliver results. My passion for technology and customer-centric approach make me a valuable asset to any organization seeking a dynamic Product Manager.';
     const savedExperience = localStorage.getItem('experience') || 'Experience content goes here';
-    // ..
     setName(savedName);
     setPosition(savedPosition);
     setEmail(savedEmail);
@@ -89,7 +88,7 @@ const [editExperience, setEditExperience] = useState('');
             <button
               onClick={handleSave}
               className="bg-green-500 text-white p-1 border border-blue-500 rounded"
-              style={{ marginRight: '10px', marginTop: '10px' }}
+              style={{ marginRight: '10px', marginTop: '10px', width: '150px', height: '50px' }}
             >
               Save
             </button>
@@ -112,66 +111,66 @@ const [editExperience, setEditExperience] = useState('');
               {name}
             </h3>
           )}
-{isEditing ? (
-  <div>
-    <input
-      type="text"
-      className="text-lg"
-      style={{ color: selectedTemplate }}
-      value={editPosition}
-      onChange={(e) => setEditPosition(e.target.value)}
-    />
-  </div>
-) : (
-  <p className="text-lg" style={{ color: selectedTemplate }} onClick={() => setIsEditing(true)}>
-    {position}
-  </p>
-)}
+          {isEditing ? (
+            <div>
+              <input
+                type="text"
+                className="text-lg"
+                style={{ color: selectedTemplate }}
+                value={editPosition}
+                onChange={(e) => setEditPosition(e.target.value)}
+              />
+            </div>
+          ) : (
+            <p className="text-lg" style={{ color: selectedTemplate }} onClick={() => setIsEditing(true)}>
+              {position}
+            </p>
+          )}
 
-{isEditing ? (
-  <div>
-    <input
-      type="text"
-      className="text-sm"
-      value={editEmail}
-      onChange={(e) => setEditEmail(e.target.value)}
-    />
-  </div>
-) : (
-  <p className="text-sm" onClick={() => setIsEditing(true)}>{email}</p>
-)}
+          {isEditing ? (
+            <div>
+              <input
+                type="text"
+                className="text-sm"
+                value={editEmail}
+                onChange={(e) => setEditEmail(e.target.value)}
+              />
+            </div>
+          ) : (
+            <p className="text-sm" onClick={() => setIsEditing(true)}>{email}</p>
+          )}
 
-{isEditing ? (
-  <div>
-    <input
-      type="text"
-      className="text-sm"
-      value={editPhone}
-      onChange={(e) => setEditPhone(e.target.value)}
-    />
-  </div>
-) : (
-  <p className="text-sm" onClick={() => setIsEditing(true)}>{phone}</p>
-)}
+          {isEditing ? (
+            <div>
+              <input
+                type="text"
+                className="text-sm"
+                value={editPhone}
+                onChange={(e) => setEditPhone(e.target.value)}
+              />
+            </div>
+          ) : (
+            <p className="text-sm" onClick={() => setIsEditing(true)}>{phone}</p>
+          )}
         </div>
         <Avatar className="w-24 h-24">
           <AvatarImage alt="Profile picture" src="/placeholder.svg?height=96&width=96" />
         </Avatar>
       </div>
       <div className="mt-8">
-  <h2 className="text-xl font-semibold mb-2" onClick={() => setIsEditing(true)}>SUMMARY</h2>
-  {isEditing ? (
-    <div>
-      <textarea
-        className="text-sm w-full"
-        value={editSummary}
-        onChange={(e) => setEditSummary(e.target.value)}
-      />
-    </div>
-  ) : (
-    <p className="text-sm">{summary}</p>
-  )}
-</div>
+        <h2 className="text-xl font-semibold mb-2" onClick={() => setIsEditing(true)}>SUMMARY</h2>
+        {isEditing ? (
+          <div>
+            <textarea
+              className="text-sm w-full"
+              value={editSummary}
+              onChange={(e) => setEditSummary(e.target.value)}
+            />
+          </div>
+        ) : (
+          <p className="text-sm">{summary}</p>
+        )}
+      </div>
       <div className="mt-8">
         <h2 className="text-xl font-semibold mb-2">EXPERIENCE</h2>
         <div className="mb-4">
@@ -236,7 +235,7 @@ const [editExperience, setEditExperience] = useState('');
               automation through agile practices implementation
             </li>
             <li>
-              Developed a solid understanding of the company's roadmap and overall product strategy while demonstrating
+              Developed a solid understanding of the company&#39;s roadmap and overall product strategy while demonstrating
             </li>
           </ul>
         </div>
