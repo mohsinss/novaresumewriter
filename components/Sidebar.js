@@ -3,8 +3,9 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+// import anthropic from "anthropic";
 
-export default function Sidebar({ onTemplateChange }) {
+export default function Sidebar({ onTemplateChange, experienceItems, setExperienceItems }) {
   const [showTemplateButtons, setShowTemplateButtons] = useState(false);
   const [showAIAssistant, setShowAIAssistant] = useState(false);
   const [keywords, setKeywords] = useState("");
@@ -19,12 +20,38 @@ export default function Sidebar({ onTemplateChange }) {
     setShowAIAssistant(!showAIAssistant);
   };
 
-  const handleSubmit = () => {
-    // Perform AI Assistant submission logic here
-    console.log("Keywords:", keywords);
-    console.log("Text:", text);
-    console.log("Language Style:", languageStyle);
-  };
+  const handleSubmit = async () => {
+    console.log("handleSubmit called");
+    console.log({ experienceItems, text, languageStyle, keywords }); // Log the data being sent
+
+    try {
+        const response = await fetch("/api/generateBulletPoints", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ experienceItems, text, languageStyle, keywords }),
+        });
+
+        console.log("Response received:", response);  // Log the raw response object
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log("Data received:", data);  // Log the parsed data
+            const updatedExperienceItems = data.experienceItems;
+            console.log("Updated experience items:", updatedExperienceItems);  // Log the updated experience items
+
+            setExperienceItems(updatedExperienceItems);
+        } else {
+            console.error("Error generating bullet points:", response.statusText);
+            response.text().then(text => console.error("Error details:", text));
+        }
+    } catch (error) {
+        console.error("Error generating bullet points:", error);
+    }
+};
+
+  
 
   const colors = [
     "blue",

@@ -211,7 +211,11 @@ export default function AppRes({ selectedTemplate }) {
   )}
 <div className="flex text-xs mt-2">
   {isEditing ? (
-    <div>
+    <div className="flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill={selectedTemplate}>
+        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+      </svg>
       <input
         type="text"
         className="mr-2"
@@ -220,11 +224,19 @@ export default function AppRes({ selectedTemplate }) {
       />
     </div>
   ) : (
-    <p className="mr-2" onClick={() => setIsEditing(true)}>{email}</p>
+    <div className="flex items-center mr-2 cursor-pointer" onClick={() => setIsEditing(true)}>
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill={selectedTemplate}>
+        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+      </svg>
+      <p>{email}</p>
+    </div>
   )}
-  <span className="mr-2" style={{ color: selectedTemplate }}>•</span>
   {isEditing ? (
-    <div>
+    <div className="flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill={selectedTemplate}>
+        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+      </svg>
       <input
         type="text"
         className="mr-2"
@@ -233,11 +245,18 @@ export default function AppRes({ selectedTemplate }) {
       />
     </div>
   ) : (
-    <p className="mr-1" onClick={() => setIsEditing(true)}>{phone}</p>
+    <div className="flex items-center mr-2 cursor-pointer" onClick={() => setIsEditing(true)}>
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill={selectedTemplate}>
+        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+      </svg>
+      <p>{phone}</p>
+    </div>
   )}
-  <span className="mr-1" style={{ color: selectedTemplate }}>•</span>
   {isEditing ? (
-    <div>
+    <div className="flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill={selectedTemplate}>
+        <path d="M10 0C4.477 0 0 4.477 0 10s4.477 10 10 10 10-4.477 10-10S15.523 0 10 0zm5.29 14.29L10 11.41l-5.29 2.88a1.001 1.001 0 01-1.42-1.42l5.29-2.88-5.29-2.88a1.001 1.001 0 011.42-1.42L10 8.59l5.29-2.88a1.001 1.001 0 011.42 1.42l-5.29 2.88 5.29 2.88a1.001 1.001 0 01-1.42 1.42z" />
+      </svg>
       <input
         type="text"
         className="mr-2"
@@ -246,11 +265,18 @@ export default function AppRes({ selectedTemplate }) {
       />
     </div>
   ) : (
-    <p className="mr-1" onClick={() => setIsEditing(true)}>{linkedin}</p>
+    <div className="flex items-center mr-2 cursor-pointer" onClick={() => setIsEditing(true)}>
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill={selectedTemplate}>
+        <path d="M10 0C4.477 0 0 4.477 0 10s4.477 10 10 10 10-4.477 10-10S15.523 0 10 0zm5.29 14.29L10 11.41l-5.29 2.88a1.001 1.001 0 01-1.42-1.42l5.29-2.88-5.29-2.88a1.001 1.001 0 011.42-1.42L10 8.59l5.29-2.88a1.001 1.001 0 011.42 1.42l-5.29 2.88 5.29 2.88a1.001 1.001 0 01-1.42 1.42z" />
+      </svg>
+      <p>{linkedin}</p>
+    </div>
   )}
-  <span className="mr-1" style={{ color: selectedTemplate }}>•</span>
-  {isEditing ? (
-    <div>
+  {/* {isEditing ? (
+    <div className="flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill={selectedTemplate}>
+        <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
+      </svg>
       <input
         type="text"
         className="mr-2"
@@ -259,11 +285,18 @@ export default function AppRes({ selectedTemplate }) {
       />
     </div>
   ) : (
-    <p className="mr-1" onClick={() => setIsEditing(true)}>{twitter}</p>
-  )}
-  <span className="mr-1" style={{ color: selectedTemplate }}>•</span>
+    <div className="flex items-center mr-2 cursor-pointer" onClick={() => setIsEditing(true)}>
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill={selectedTemplate}>
+        <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
+      </svg>
+      <p>{twitter}</p>
+    </div>
+  )} */}
   {isEditing ? (
-    <div>
+    <div className="flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill={selectedTemplate}>
+        <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+      </svg>
       <input
         type="text"
         value={editAddress}
@@ -271,7 +304,12 @@ export default function AppRes({ selectedTemplate }) {
       />
     </div>
   ) : (
-    <p onClick={() => setIsEditing(true)}>{address}</p>
+    <div className="flex items-center cursor-pointer" onClick={() => setIsEditing(true)}>
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill={selectedTemplate}>
+        <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+      </svg>
+      <p>{address}</p>
+    </div>
   )}
 </div>
 </div>
@@ -316,180 +354,190 @@ export default function AppRes({ selectedTemplate }) {
   ) : (
     <h2 className="text-xl font-semibold mb-2" style={{ color: selectedTemplate }} onClick={() => setIsEditing(true)}>{experienceTitle}</h2>
   )}
-<div className="mb-4">
-  {experienceItems.map((item, index) => (
-    <div key={index}>
-      <div className="flex items-center mb-2">
-        {isEditing ? (
-          <>
-            <input
-              type="text"
-              className="mr-2 w-auto min-w-[20px] max-w-[200px]"
-              style={{
-                width: editExperienceItems[index].positionTitle ? 'auto' : '20px',
-                color: selectedTemplate,
-              }}
-              value={editExperienceItems[index].positionTitle}
-              onChange={(e) => {
-                const updatedItems = [...editExperienceItems];
-                updatedItems[index].positionTitle = e.target.value;
-                setEditExperienceItems(updatedItems);
-              }}
-            />
-            <input
-              type="text"
-              className="mr-2 w-auto min-w-[20px] max-w-[200px]"
-              style={{ width: editExperienceItems[index].companyName ? 'auto' : '20px' }}
-              value={editExperienceItems[index].companyName}
-              onChange={(e) => {
-                const updatedItems = [...editExperienceItems];
-                updatedItems[index].companyName = e.target.value;
-                setEditExperienceItems(updatedItems);
-              }}
-            />
-            <input
-              type="text"
-              className="mr-2 w-auto min-w-[20px] max-w-[200px]"
-              style={{
-                width: editExperienceItems[index].location ? 'auto' : '20px',
-                color: selectedTemplate,
-              }}
-              value={editExperienceItems[index].location}
-              onChange={(e) => {
-                const updatedItems = [...editExperienceItems];
-                updatedItems[index].location = e.target.value;
-                setEditExperienceItems(updatedItems);
-              }}
-            />
-            <input
-              type="text"
-              className="mr-2 w-auto min-w-[20px] max-w-[200px]"
-              style={{ width: editExperienceItems[index].from ? 'auto' : '20px' }}
-              value={editExperienceItems[index].from}
-              onChange={(e) => {
-                const updatedItems = [...editExperienceItems];
-                updatedItems[index].from = e.target.value;
-                setEditExperienceItems(updatedItems);
-              }}
-            />
-            <div className="flex items-center">
+  <div className="mb-4">
+    {editExperienceItems.map((item, index) => (
+      <div key={index}>
+        <div className="flex items-center mb-2">
+          {isEditing ? (
+            <>
               <input
                 type="text"
                 className="mr-2 w-auto min-w-[20px] max-w-[200px]"
                 style={{
-                  width: editExperienceItems[index].to ? 'auto' : '20px',
+                  width: item.positionTitle ? 'auto' : '20px',
                   color: selectedTemplate,
                 }}
-                value={editExperienceItems[index].to}
+                value={item.positionTitle}
                 onChange={(e) => {
                   const updatedItems = [...editExperienceItems];
-                  updatedItems[index].to = e.target.value;
+                  updatedItems[index].positionTitle = e.target.value;
                   setEditExperienceItems(updatedItems);
                 }}
               />
-              <label className="flex items-center">
+              <input
+                type="text"
+                className="mr-2 w-auto min-w-[20px] max-w-[200px]"
+                style={{ width: item.companyName ? 'auto' : '20px' }}
+                value={item.companyName}
+                onChange={(e) => {
+                  const updatedItems = [...editExperienceItems];
+                  updatedItems[index].companyName = e.target.value;
+                  setEditExperienceItems(updatedItems);
+                }}
+              />
+              <input
+                type="text"
+                className="mr-2 w-auto min-w-[20px] max-w-[200px]"
+                style={{
+                  width: item.location ? 'auto' : '20px',
+                  color: selectedTemplate,
+                }}
+                value={item.location}
+                onChange={(e) => {
+                  const updatedItems = [...editExperienceItems];
+                  updatedItems[index].location = e.target.value;
+                  setEditExperienceItems(updatedItems);
+                }}
+              />
+              <input
+                type="text"
+                className="mr-2 w-auto min-w-[20px] max-w-[200px]"
+                style={{ width: item.from ? 'auto' : '20px' }}
+                value={item.from}
+                onChange={(e) => {
+                  const updatedItems = [...editExperienceItems];
+                  updatedItems[index].from = e.target.value;
+                  setEditExperienceItems(updatedItems);
+                }}
+              />
+              <div className="flex items-center">
                 <input
-                  type="checkbox"
-                  className="mr-1"
-                  checked={editExperienceItems[index].to === 'Present'}
+                  type="text"
+                  className="mr-2 w-auto min-w-[20px] max-w-[200px]"
+                  style={{
+                    width: item.to ? 'auto' : '20px',
+                    color: selectedTemplate,
+                  }}
+                  value={item.to}
                   onChange={(e) => {
                     const updatedItems = [...editExperienceItems];
-                    updatedItems[index].to = e.target.checked ? 'Present' : '';
+                    updatedItems[index].to = e.target.value;
                     setEditExperienceItems(updatedItems);
                   }}
                 />
-                Present
-              </label>
-            </div>
-          </>
+                <label className="flex items-center">
+                  <input
+                    type="checkbox"
+                    className="mr-1"
+                    checked={item.to === 'Present'}
+                    onChange={(e) => {
+                      const updatedItems = [...editExperienceItems];
+                      updatedItems[index].to = e.target.checked ? 'Present' : '';
+                      setEditExperienceItems(updatedItems);
+                    }}
+                  />
+                  Present
+                </label>
+              </div>
+            </>
+          ) : (
+            <>
+              <span className="mr-2 font-bold cursor-pointer" style={{ color: selectedTemplate }} onClick={() => setIsEditing(true)}>
+                {item.positionTitle}
+              </span>
+              <span className="mr-2 cursor-pointer" onClick={() => setIsEditing(true)}>
+                {item.companyName}
+              </span>
+              <span
+                className="mr-2 cursor-pointer"
+                style={{ color: selectedTemplate }}
+                onClick={() => setIsEditing(true)}
+              >
+                {item.location}
+              </span>
+              <span className="mr-2 cursor-pointer" onClick={() => setIsEditing(true)}>
+                {item.from}
+              </span>
+              <span
+                className="cursor-pointer"
+                style={{ color: selectedTemplate }}
+                onClick={() => setIsEditing(true)}
+              >
+                {item.to === 'Present' ? 'Present' : item.to}
+              </span>
+            </>
+          )}
+        </div>
+        {item.responsibilities && item.responsibilities.length > 0 && (
+  <ul className="text-sm list-disc pl-4">
+    {item.responsibilities.map((responsibility, responsibilityIndex) => (
+      <li key={responsibilityIndex}>
+        {isEditing ? (
+          <input
+            type="text"
+            className="w-full"
+            value={responsibility}
+            onChange={(e) => {
+              const updatedItems = [...editExperienceItems];
+              updatedItems[index].responsibilities[responsibilityIndex] = e.target.value;
+              setEditExperienceItems(updatedItems);
+            }}
+          />
         ) : (
-          <>
-            <span
-              className="mr-2 font-bold cursor-pointer"
-              style={{ color: selectedTemplate }}
-              onClick={() => {
-                setIsEditing(true);
-                setEditExperienceItems(experienceItems.map(item => ({ ...item })));
-              }}
-            >
-              {item.positionTitle}
-            </span>
-            <span
-              className="mr-2 cursor-pointer"
-              onClick={() => {
-                setIsEditing(true);
-                setEditExperienceItems(experienceItems.map(item => ({ ...item })));
-              }}
-            >
-              {item.companyName}
-            </span>
-            <span
-              className="mr-2 cursor-pointer"
-              style={{ color: selectedTemplate }}
-              onClick={() => {
-                setIsEditing(true);
-                setEditExperienceItems(experienceItems.map(item => ({ ...item })));
-              }}
-            >
-              {item.location}
-            </span>
-            <span
-              className="mr-2 cursor-pointer"
-              onClick={() => {
-                setIsEditing(true);
-                setEditExperienceItems(experienceItems.map(item => ({ ...item })));
-              }}
-            >
-              {item.from}
-            </span>
-            <span
-              className="cursor-pointer"
-              style={{ color: selectedTemplate }}
-              onClick={() => {
-                setIsEditing(true);
-                setEditExperienceItems(experienceItems.map(item => ({ ...item })));
-              }}
-            >
-              {item.to === 'Present' ? 'Present' : item.to}
-            </span>
-          </>
+          responsibility
+        )}
+      </li>
+    ))}
+  </ul>
+)}
+        {isEditing && (
+          <div
+            className="flex items-center cursor-pointer mt-2"
+            onClick={() => {
+              const updatedExperienceItems = [...experienceItems];
+              const updatedEditExperienceItems = [...editExperienceItems];
+              updatedExperienceItems.splice(index, 1);
+              updatedEditExperienceItems.splice(index, 1);
+              setExperienceItems(updatedExperienceItems);
+              setEditExperienceItems(updatedEditExperienceItems);
+            }}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill={selectedTemplate}>
+              <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
+            </svg>
+            <span>Delete</span>
+          </div>
         )}
       </div>
-
-              {item.responsibilities && item.responsibilities.length > 0 && (
-                <>
-                  {isEditing ? (
-                    <ul className="text-sm list-disc pl-4">
-  {editExperienceItems[index].responsibilities.map((responsibility, responsibilityIndex) => (
-    <li key={responsibilityIndex}>
-      <textarea
-        className="w-full resize-none" // 'resize-none' prevents the user from manually resizing the textarea
-        style={{ overflowY: 'hidden' }}  // Prevents scrollbar from appearing
-        value={responsibility}
-        onChange={(e) => {
-          const updatedItems = [...editExperienceItems];
-          updatedItems[index].responsibilities[responsibilityIndex] = e.target.value;
-          setEditExperienceItems(updatedItems);
-        }}
-        onClick={() => setIsEditing(true)}
-      />
-    </li>
-  ))}
-</ul>
-
-                  ) : (
-                    <ul className="text-sm list-disc pl-4" onClick={() => setIsEditing(true)}>
-                      {item.responsibilities.map((responsibility, responsibilityIndex) => (
-                        <li key={responsibilityIndex}>{responsibility}</li>
-                      ))}
-                    </ul>
-                  )}
-                </>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
+    ))}
+  </div>
+  {isEditing && (
+    <div
+      className="flex items-center cursor-pointer mb-4"
+      onClick={() => {
+        const newExperience = {
+          positionTitle: 'Position X',
+          companyName: 'Company X',
+          location: 'Location X',
+          from: '20XX',
+          to: '20XX',
+          responsibilities: [
+            'Responsibility 1',
+            'Responsibility 2',
+            'Responsibility 3',
+          ],
+        };
+        setExperienceItems([...experienceItems, newExperience]);
+        setEditExperienceItems([...editExperienceItems, newExperience]);
+      }}
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill={selectedTemplate}>
+        <path fillRule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clipRule="evenodd" />
+      </svg>
+      <span>Add more experiences</span>
     </div>
+  )}
+</div>
+</div>
   );
 }
