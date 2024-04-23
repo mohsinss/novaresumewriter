@@ -176,111 +176,119 @@ export default function AppRes({ selectedTemplate }) {
         ) : null}
       </div>
       <div className="flex flex-col items-center mt-4 cursor-pointer">
-        {isEditing ? (
-          <div>
-            <input
-              type="text"
-              className="text-4xl font-bold text-center"
-              value={editName}
-              onChange={(e) => setEditName(e.target.value)}
-            />
-          </div>
-        ) : (
-          <h3 className="text-4xl font-bold text-center" onClick={handleEdit}>
-            {name}
-          </h3>
-        )}
-        {isEditing ? (
-          <div>
-            <input
-              type="text"
-              className="text-2xl text-center ml-8"
-              style={{ color: selectedTemplate }}
-              value={editPosition}
-              onChange={(e) => setEditPosition(e.target.value)}
-            />
-          </div>
-        ) : (
-          <p className="text-2xl text-center ml-8" style={{ color: selectedTemplate }} onClick={() => setIsEditing(true)}>
-            {position}
-          </p>
-        )}
-        <div className="flex text-xs mt-2 cursor-pointer">
-          {isEditing ? (
-            <div>
-              <input
-                type="text"
-                className="mr-2"
-                
-                value={editEmail}
-                onChange={(e) => setEditEmail(e.target.value)}
-              />
-            </div>
-          ) : (
-            <p className="mr-2" onClick={() => setIsEditing(true)}>{email}</p>
-          )}
-          {isEditing ? (
-            <div>
-              <input
-                type="text"
-                className="mr-2"
-                value={editPhone}
-                onChange={(e) => setEditPhone(e.target.value)}
-              />
-            </div>
-          ) : (
-            <p className="mr-2" onClick={() => setIsEditing(true)}>{phone}</p>
-          )}
-          {isEditing ? (
-            <div>
-              <input
-                type="text"
-                className="mr-2"
-                value={editLinkedin}
-                onChange={(e) => setEditLinkedin(e.target.value)}
-              />
-            </div>
-          ) : (
-            <p className="mr-2" onClick={() => setIsEditing(true)}>{linkedin}</p>
-          )}
-          {isEditing ? (
-            <div>
-              <input
-                type="text"
-                className="mr-2"
-                value={editTwitter}
-                onChange={(e) => setEditTwitter(e.target.value)}
-              />
-            </div>
-          ) : (
-            <p className="mr-2" onClick={() => setIsEditing(true)}>{twitter}</p>
-          )}
-          {isEditing ? (
-            <div>
-              <input
-                type="text"
-                value={editAddress}
-                onChange={(e) => setEditAddress(e.target.value)}
-              />
-            </div>
-          ) : (
-            <p onClick={() => setIsEditing(true)}>{address}</p>
-          )}
-        </div>
-      </div>
+  {isEditing ? (
+    <div>
+      <input
+        type="text"
+        className="text-4xl font-bold text-center"
+        style={{ color: selectedTemplate }}
+        value={editName}
+        onChange={(e) => setEditName(e.target.value)}
+      />
+    </div>
+  ) : (
+    <h3
+      className="text-4xl font-bold text-center"
+      style={{ color: selectedTemplate }}
+      onClick={handleEdit}
+    >
+      {name}
+    </h3>
+  )}
+  {isEditing ? (
+    <div>
+      <input
+        type="text"
+        className="text-2xl text-center ml-8"
+        value={editPosition}
+        onChange={(e) => setEditPosition(e.target.value)}
+      />
+    </div>
+  ) : (
+    <p className="text-2xl text-center ml-8" onClick={() => setIsEditing(true)}>
+      {position}
+    </p>
+  )}
+<div className="flex text-xs mt-2">
+  {isEditing ? (
+    <div>
+      <input
+        type="text"
+        className="mr-2"
+        value={editEmail}
+        onChange={(e) => setEditEmail(e.target.value)}
+      />
+    </div>
+  ) : (
+    <p className="mr-2" onClick={() => setIsEditing(true)}>{email}</p>
+  )}
+  <span className="mr-2" style={{ color: selectedTemplate }}>•</span>
+  {isEditing ? (
+    <div>
+      <input
+        type="text"
+        className="mr-2"
+        value={editPhone}
+        onChange={(e) => setEditPhone(e.target.value)}
+      />
+    </div>
+  ) : (
+    <p className="mr-1" onClick={() => setIsEditing(true)}>{phone}</p>
+  )}
+  <span className="mr-1" style={{ color: selectedTemplate }}>•</span>
+  {isEditing ? (
+    <div>
+      <input
+        type="text"
+        className="mr-2"
+        value={editLinkedin}
+        onChange={(e) => setEditLinkedin(e.target.value)}
+      />
+    </div>
+  ) : (
+    <p className="mr-1" onClick={() => setIsEditing(true)}>{linkedin}</p>
+  )}
+  <span className="mr-1" style={{ color: selectedTemplate }}>•</span>
+  {isEditing ? (
+    <div>
+      <input
+        type="text"
+        className="mr-2"
+        value={editTwitter}
+        onChange={(e) => setEditTwitter(e.target.value)}
+      />
+    </div>
+  ) : (
+    <p className="mr-1" onClick={() => setIsEditing(true)}>{twitter}</p>
+  )}
+  <span className="mr-1" style={{ color: selectedTemplate }}>•</span>
+  {isEditing ? (
+    <div>
+      <input
+        type="text"
+        value={editAddress}
+        onChange={(e) => setEditAddress(e.target.value)}
+      />
+    </div>
+  ) : (
+    <p onClick={() => setIsEditing(true)}>{address}</p>
+  )}
+</div>
+</div>
       <div className="mt-8 cursor-pointer">
-        {isEditing ? (
-          <div>
-            <input
-              type="text"
-              className="text-xl font-semibold mb-2"
-              value={editSummaryTitle}
-              onChange={(e) => setEditSummaryTitle(e.target.value)}
-            />
-          </div>
-        ) : (
-          <h2 className="text-xl font-semibold mb-2" onClick={() => setIsEditing(true)}>{summaryTitle}</h2>
-        )}
+      {isEditing ? (
+    <div>
+      <input
+        type="text"
+        className="text-xl font-semibold mb-2"
+        style={{ color: selectedTemplate }}
+        value={editSummaryTitle}
+        onChange={(e) => setEditSummaryTitle(e.target.value)}
+      />
+    </div>
+  ) : (
+    <h2 className="text-xl font-semibold mb-2" style={{ color: selectedTemplate }} onClick={() => setIsEditing(true)}>{summaryTitle}</h2>
+  )}
         {isEditing ? (
           <div>
             <textarea
@@ -294,104 +302,111 @@ export default function AppRes({ selectedTemplate }) {
         )}
       </div>
       <div className="mt-8">
-        {isEditing ? (
-          <div>
-            <input
-              type="text"
-              className="text-xl font-semibold mb-2"
-              value={editExperienceTitle}
-              onChange={(e) => setEditExperienceTitle(e.target.value)}
-              onClick={() => setIsEditing(true)}
-            />
-          </div>
-        ) : (
-          <h2 className="text-xl font-semibold mb-2" onClick={() => setIsEditing(true)}>{experienceTitle}</h2>
-        )}
+  {isEditing ? (
+    <div>
+      <input
+        type="text"
+        className="text-xl font-semibold mb-2"
+        style={{ color: selectedTemplate }}
+        value={editExperienceTitle}
+        onChange={(e) => setEditExperienceTitle(e.target.value)}
+        onClick={() => setIsEditing(true)}
+      />
+    </div>
+  ) : (
+    <h2 className="text-xl font-semibold mb-2" style={{ color: selectedTemplate }} onClick={() => setIsEditing(true)}>{experienceTitle}</h2>
+  )}
 <div className="mb-4">
   {experienceItems.map((item, index) => (
     <div key={index}>
       <div className="flex items-center mb-2">
         {isEditing ? (
           <>
-<div className="flex items-center w-auto min-w-[20px] max-w-100px]">
-
-<input
-  type="text"
-  className="mr-2 w-auto min-w-[20px] max-w-[200px]"
-  style={{ width: editExperienceItems[index].positionTitle ? 'auto' : '20px' }}
-  value={editExperienceItems[index].positionTitle}
-  onChange={(e) => {
-    const updatedItems = [...editExperienceItems];
-    updatedItems[index].positionTitle = e.target.value;
-    setEditExperienceItems(updatedItems);
-  }}
-/>
-<input
-  type="text"
-  className="mr-2 w-auto min-w-[30px] max-w-[300px]"
-  style={{ width: editExperienceItems[index].companyName ? 'auto' : '20px' }}
-  value={editExperienceItems[index].companyName}
-  onChange={(e) => {
-    const updatedItems = [...editExperienceItems];
-    updatedItems[index].companyName = e.target.value;
-    setEditExperienceItems(updatedItems);
-  }}
-/>
-<input
-  type="text"
-  className="mr-2 w-auto min-w-[20px] max-w-[200px]"
-  style={{ width: editExperienceItems[index].location ? 'auto' : '20px' }}
-  value={editExperienceItems[index].location}
-  onChange={(e) => {
-    const updatedItems = [...editExperienceItems];
-    updatedItems[index].location = e.target.value;
-    setEditExperienceItems(updatedItems);
-  }}
-/>
-</div>
-<div className="flex items-center w-auto min-w-[20px] max-w-100px]">
-
-<input
-  type="text"
-  className="mr-2 w-auto min-w-[20px] max-w-[200px]"
-  style={{ width: editExperienceItems[index].from ? 'auto' : '20px' }}
-  value={editExperienceItems[index].from}
-  onChange={(e) => {
-    const updatedItems = [...editExperienceItems];
-    updatedItems[index].from = e.target.value;
-    setEditExperienceItems(updatedItems);
-  }}
-/>
-  <input
-    type="text"
-    className="mr-2 w-auto min-w-[20px] max-w-100px]"
-    style={{ width: editExperienceItems[index].to ? 'auto' : '20px' }}
-    value={editExperienceItems[index].to}
-    onChange={(e) => {
-      const updatedItems = [...editExperienceItems];
-      updatedItems[index].to = e.target.value;
-      setEditExperienceItems(updatedItems);
-    }}
-  />
-  <label className="flex items-center">
-    <input
-      type="checkbox"
-      className="mr-2 w-auto min-w-[20px] max-w-[100px]"
-      checked={editExperienceItems[index].to === 'Present'}
-      onChange={(e) => {
-        const updatedItems = [...editExperienceItems];
-        updatedItems[index].to = e.target.checked ? 'Present' : '';
-        setEditExperienceItems(updatedItems);
-      }}
-    />
-    Present
-  </label>
-</div>
+            <input
+              type="text"
+              className="mr-2 w-auto min-w-[20px] max-w-[200px]"
+              style={{
+                width: editExperienceItems[index].positionTitle ? 'auto' : '20px',
+                color: selectedTemplate,
+              }}
+              value={editExperienceItems[index].positionTitle}
+              onChange={(e) => {
+                const updatedItems = [...editExperienceItems];
+                updatedItems[index].positionTitle = e.target.value;
+                setEditExperienceItems(updatedItems);
+              }}
+            />
+            <input
+              type="text"
+              className="mr-2 w-auto min-w-[20px] max-w-[200px]"
+              style={{ width: editExperienceItems[index].companyName ? 'auto' : '20px' }}
+              value={editExperienceItems[index].companyName}
+              onChange={(e) => {
+                const updatedItems = [...editExperienceItems];
+                updatedItems[index].companyName = e.target.value;
+                setEditExperienceItems(updatedItems);
+              }}
+            />
+            <input
+              type="text"
+              className="mr-2 w-auto min-w-[20px] max-w-[200px]"
+              style={{
+                width: editExperienceItems[index].location ? 'auto' : '20px',
+                color: selectedTemplate,
+              }}
+              value={editExperienceItems[index].location}
+              onChange={(e) => {
+                const updatedItems = [...editExperienceItems];
+                updatedItems[index].location = e.target.value;
+                setEditExperienceItems(updatedItems);
+              }}
+            />
+            <input
+              type="text"
+              className="mr-2 w-auto min-w-[20px] max-w-[200px]"
+              style={{ width: editExperienceItems[index].from ? 'auto' : '20px' }}
+              value={editExperienceItems[index].from}
+              onChange={(e) => {
+                const updatedItems = [...editExperienceItems];
+                updatedItems[index].from = e.target.value;
+                setEditExperienceItems(updatedItems);
+              }}
+            />
+            <div className="flex items-center">
+              <input
+                type="text"
+                className="mr-2 w-auto min-w-[20px] max-w-[200px]"
+                style={{
+                  width: editExperienceItems[index].to ? 'auto' : '20px',
+                  color: selectedTemplate,
+                }}
+                value={editExperienceItems[index].to}
+                onChange={(e) => {
+                  const updatedItems = [...editExperienceItems];
+                  updatedItems[index].to = e.target.value;
+                  setEditExperienceItems(updatedItems);
+                }}
+              />
+              <label className="flex items-center">
+                <input
+                  type="checkbox"
+                  className="mr-1"
+                  checked={editExperienceItems[index].to === 'Present'}
+                  onChange={(e) => {
+                    const updatedItems = [...editExperienceItems];
+                    updatedItems[index].to = e.target.checked ? 'Present' : '';
+                    setEditExperienceItems(updatedItems);
+                  }}
+                />
+                Present
+              </label>
+            </div>
           </>
         ) : (
           <>
             <span
               className="mr-2 font-bold cursor-pointer"
+              style={{ color: selectedTemplate }}
               onClick={() => {
                 setIsEditing(true);
                 setEditExperienceItems(experienceItems.map(item => ({ ...item })));
@@ -410,6 +425,7 @@ export default function AppRes({ selectedTemplate }) {
             </span>
             <span
               className="mr-2 cursor-pointer"
+              style={{ color: selectedTemplate }}
               onClick={() => {
                 setIsEditing(true);
                 setEditExperienceItems(experienceItems.map(item => ({ ...item })));
@@ -428,6 +444,7 @@ export default function AppRes({ selectedTemplate }) {
             </span>
             <span
               className="cursor-pointer"
+              style={{ color: selectedTemplate }}
               onClick={() => {
                 setIsEditing(true);
                 setEditExperienceItems(experienceItems.map(item => ({ ...item })));
@@ -443,21 +460,23 @@ export default function AppRes({ selectedTemplate }) {
                 <>
                   {isEditing ? (
                     <ul className="text-sm list-disc pl-4">
-                      {editExperienceItems[index].responsibilities.map((responsibility, responsibilityIndex) => (
-                        <li key={responsibilityIndex}>
-                          <input
-                            type="text"
-                            value={responsibility}
-                            onChange={(e) => {
-                              const updatedItems = [...editExperienceItems];
-                              updatedItems[index].responsibilities[responsibilityIndex] = e.target.value;
-                              setEditExperienceItems(updatedItems);
-                            }}
-                            onClick={() => setIsEditing(true)}
-                          />
-                        </li>
-                      ))}
-                    </ul>
+  {editExperienceItems[index].responsibilities.map((responsibility, responsibilityIndex) => (
+    <li key={responsibilityIndex}>
+      <textarea
+        className="w-full resize-none" // 'resize-none' prevents the user from manually resizing the textarea
+        style={{ overflowY: 'hidden' }}  // Prevents scrollbar from appearing
+        value={responsibility}
+        onChange={(e) => {
+          const updatedItems = [...editExperienceItems];
+          updatedItems[index].responsibilities[responsibilityIndex] = e.target.value;
+          setEditExperienceItems(updatedItems);
+        }}
+        onClick={() => setIsEditing(true)}
+      />
+    </li>
+  ))}
+</ul>
+
                   ) : (
                     <ul className="text-sm list-disc pl-4" onClick={() => setIsEditing(true)}>
                       {item.responsibilities.map((responsibility, responsibilityIndex) => (
