@@ -7,15 +7,42 @@ export default function AppRes({ selectedTemplate }) {
   const [position, setPosition] = useState('Product Manager');
   const [email, setEmail] = useState('janed.alshammari@gmail.com');
   const [phone, setPhone] = useState('8859978644');
+  const [linkedin, setLinkedin] = useState('jane.douglas');
+  const [twitter, setTwitter] = useState('@janedouglas');
+  const [address, setAddress] = useState('123 Main St, San Francisco, CA');
   const [editName, setEditName] = useState(name);
   const [editPosition, setEditPosition] = useState(position);
   const [editEmail, setEditEmail] = useState(email);
   const [editPhone, setEditPhone] = useState(phone);
+  const [editLinkedin, setEditLinkedin] = useState(linkedin);
+  const [editTwitter, setEditTwitter] = useState(twitter);
+  const [editAddress, setEditAddress] = useState(address);
   const [hasMounted, setHasMounted] = useState(false);
   const [summary, setSummary] = useState('');
   const [editSummary, setEditSummary] = useState('');
-  const [experience, setExperience] = useState('');
-  const [editExperience, setEditExperience] = useState('');
+  const [experienceTitle, setExperienceTitle] = useState('EXPERIENCE');
+  const [editExperienceTitle, setEditExperienceTitle] = useState('EXPERIENCE');
+  const [summaryTitle, setSummaryTitle] = useState('SUMMARY');
+  const [editSummaryTitle, setEditSummaryTitle] = useState('SUMMARY');
+  const [experienceItems, setExperienceItems] = useState([
+    {
+      positionTitle: 'Founder',
+      companyName: 'Magical Resume',
+      location: 'San Francisco, California, United States',
+      from: '2022',
+      to: 'Present',
+      responsibilities: [
+        'Collaborated with key stakeholders in Supply Chain, Marketing, Site Merchandising, and Affiliates to consistently achieve operational goals and drive growth opportunities for Magical Resume',
+        'Led two product teams focused on algorithmic pricing and business intelligence, utilizing GPT3 and AI technologies to enhance resume writing software capabilities',
+        'Oversaw a $10+ million P&L for beauty subcategories, increasing revenue by 30% YoY through strategic product pricing, positioning, and roadmap planning',
+        'Evaluated promotional plans to ensure alignment with product line strategy while effectively conveying the message to target audiences',
+        'Gained hands-on experience in product management by working closely with AR designers, engineers, data scientists, and user researchers',
+      ],
+    },
+  ]);
+
+  const [editExperienceItems, setEditExperienceItems] = useState(experienceItems.map(item => ({ ...item })));
+
 
   useEffect(() => {
     setHasMounted(true);
@@ -23,20 +50,50 @@ export default function AppRes({ selectedTemplate }) {
     const savedPosition = localStorage.getItem('position') || position;
     const savedEmail = localStorage.getItem('email') || email;
     const savedPhone = localStorage.getItem('phone') || phone;
+    const savedLinkedin = localStorage.getItem('linkedin') || linkedin;
+    const savedTwitter = localStorage.getItem('twitter') || twitter;
+    const savedAddress = localStorage.getItem('address') || address;
     const savedSummary = localStorage.getItem('summary') || 'As an experienced Product Manager, I have a proven track record of successfully launching and managing products from ideation to market. My expertise in product strategy, development, and launch has resulted in significant revenue growth for my previous employers. With strong leadership skills and the ability to collaborate cross-functionally with teams, I am confident in my ability to drive innovation and deliver results. My passion for technology and customer-centric approach make me a valuable asset to any organization seeking a dynamic Product Manager.';
-    const savedExperience = localStorage.getItem('experience') || 'Experience content goes here';
+    const savedSummaryTitle = localStorage.getItem('summaryTitle') || 'SUMMARY';
+    const savedExperienceTitle = localStorage.getItem('experienceTitle') || 'EXPERIENCE';
+    const savedExperienceItems = JSON.parse(localStorage.getItem('experienceItems')) || experienceItems;
+
+    // Check if savedExperienceItems is an array of objects with the expected properties
+    const isValidExperienceItems = Array.isArray(savedExperienceItems) &&
+      savedExperienceItems.every(item =>
+        typeof item === 'object' &&
+        item.hasOwnProperty('positionTitle') &&
+        item.hasOwnProperty('companyName') &&
+        item.hasOwnProperty('location') &&
+        item.hasOwnProperty('from') &&
+        item.hasOwnProperty('to') &&
+        item.hasOwnProperty('responsibilities')
+      );
+
+    const experienceItemsToUse = isValidExperienceItems ? savedExperienceItems : experienceItems;
+
     setName(savedName);
     setPosition(savedPosition);
     setEmail(savedEmail);
     setPhone(savedPhone);
+    setLinkedin(savedLinkedin);
+    setTwitter(savedTwitter);
+    setAddress(savedAddress);
     setEditName(savedName);
     setEditPosition(savedPosition);
     setEditEmail(savedEmail);
     setEditPhone(savedPhone);
+    setEditLinkedin(savedLinkedin);
+    setEditTwitter(savedTwitter);
+    setEditAddress(savedAddress);
     setSummary(savedSummary);
-    setExperience(savedExperience);
     setEditSummary(savedSummary);
-    setEditExperience(savedExperience);
+    setSummaryTitle(savedSummaryTitle);
+    setEditSummaryTitle(savedSummaryTitle);
+    setExperienceTitle(savedExperienceTitle);
+    setEditExperienceTitle(savedExperienceTitle);
+    setExperienceItems(experienceItemsToUse);
+    setEditExperienceItems(experienceItemsToUse.map(item => ({ ...item })));
   }, []);
 
   useEffect(() => {
@@ -55,6 +112,18 @@ export default function AppRes({ selectedTemplate }) {
     setEditPhone(phone);
   }, [phone]);
 
+  useEffect(() => {
+    setEditLinkedin(linkedin);
+  }, [linkedin]);
+
+  useEffect(() => {
+    setEditTwitter(twitter);
+  }, [twitter]);
+
+  useEffect(() => {
+    setEditAddress(address);
+  }, [address]);
+
   const handleEdit = () => {
     setIsEditing(true);
   };
@@ -64,15 +133,26 @@ export default function AppRes({ selectedTemplate }) {
     setPosition(editPosition);
     setEmail(editEmail);
     setPhone(editPhone);
+    setLinkedin(editLinkedin);
+    setTwitter(editTwitter);
+    setAddress(editAddress);
     setSummary(editSummary);
-    setExperience(editExperience);
+    setSummaryTitle(editSummaryTitle);
+    setExperienceTitle(editExperienceTitle);
+    setExperienceItems(editExperienceItems.map(item => ({ ...item })));
 
     localStorage.setItem('name', editName);
     localStorage.setItem('position', editPosition);
     localStorage.setItem('email', editEmail);
     localStorage.setItem('phone', editPhone);
+    localStorage.setItem('linkedin', editLinkedin);
+    localStorage.setItem('twitter', editTwitter);
+    localStorage.setItem('address', editAddress);
     localStorage.setItem('summary', editSummary);
-    localStorage.setItem('experience', editExperience);
+    localStorage.setItem('summaryTitle', editSummaryTitle);
+    localStorage.setItem('experienceTitle', editExperienceTitle);
+    localStorage.setItem('experienceItems', JSON.stringify(editExperienceItems));
+
     setIsEditing(false);
   };
 
@@ -81,7 +161,7 @@ export default function AppRes({ selectedTemplate }) {
   }
 
   return (
-    <div className="flex flex-col p-4 bg-white text-black" style={{ margin: '20px' }}>
+    <div className="a4-document flex flex-col p-4 bg-white text-black" style={{ margin: '20px' }}>
       <div className="relative">
         {isEditing ? (
           <div className="absolute right-0 top-0">
@@ -95,70 +175,112 @@ export default function AppRes({ selectedTemplate }) {
           </div>
         ) : null}
       </div>
-      <div className="flex justify-between items-start mt-4">
-        <div className="flex flex-col">
+      <div className="flex flex-col items-center mt-4 cursor-pointer">
+        {isEditing ? (
+          <div>
+            <input
+              type="text"
+              className="text-4xl font-bold text-center"
+              value={editName}
+              onChange={(e) => setEditName(e.target.value)}
+            />
+          </div>
+        ) : (
+          <h3 className="text-4xl font-bold text-center" onClick={handleEdit}>
+            {name}
+          </h3>
+        )}
+        {isEditing ? (
+          <div>
+            <input
+              type="text"
+              className="text-2xl text-center ml-8"
+              style={{ color: selectedTemplate }}
+              value={editPosition}
+              onChange={(e) => setEditPosition(e.target.value)}
+            />
+          </div>
+        ) : (
+          <p className="text-2xl text-center ml-8" style={{ color: selectedTemplate }} onClick={() => setIsEditing(true)}>
+            {position}
+          </p>
+        )}
+        <div className="flex text-xs mt-2 cursor-pointer">
           {isEditing ? (
             <div>
               <input
                 type="text"
-                className="text-2xl font-bold"
-                value={editName}
-                onChange={(e) => setEditName(e.target.value)}
-              />
-            </div>
-          ) : (
-            <h3 className="text-2xl font-bold" onClick={handleEdit}>
-              {name}
-            </h3>
-          )}
-          {isEditing ? (
-            <div>
-              <input
-                type="text"
-                className="text-lg"
-                style={{ color: selectedTemplate }}
-                value={editPosition}
-                onChange={(e) => setEditPosition(e.target.value)}
-              />
-            </div>
-          ) : (
-            <p className="text-lg" style={{ color: selectedTemplate }} onClick={() => setIsEditing(true)}>
-              {position}
-            </p>
-          )}
-
-          {isEditing ? (
-            <div>
-              <input
-                type="text"
-                className="text-sm"
+                className="mr-2"
+                
                 value={editEmail}
                 onChange={(e) => setEditEmail(e.target.value)}
               />
             </div>
           ) : (
-            <p className="text-sm" onClick={() => setIsEditing(true)}>{email}</p>
+            <p className="mr-2" onClick={() => setIsEditing(true)}>{email}</p>
           )}
-
           {isEditing ? (
             <div>
               <input
                 type="text"
-                className="text-sm"
+                className="mr-2"
                 value={editPhone}
                 onChange={(e) => setEditPhone(e.target.value)}
               />
             </div>
           ) : (
-            <p className="text-sm" onClick={() => setIsEditing(true)}>{phone}</p>
+            <p className="mr-2" onClick={() => setIsEditing(true)}>{phone}</p>
+          )}
+          {isEditing ? (
+            <div>
+              <input
+                type="text"
+                className="mr-2"
+                value={editLinkedin}
+                onChange={(e) => setEditLinkedin(e.target.value)}
+              />
+            </div>
+          ) : (
+            <p className="mr-2" onClick={() => setIsEditing(true)}>{linkedin}</p>
+          )}
+          {isEditing ? (
+            <div>
+              <input
+                type="text"
+                className="mr-2"
+                value={editTwitter}
+                onChange={(e) => setEditTwitter(e.target.value)}
+              />
+            </div>
+          ) : (
+            <p className="mr-2" onClick={() => setIsEditing(true)}>{twitter}</p>
+          )}
+          {isEditing ? (
+            <div>
+              <input
+                type="text"
+                value={editAddress}
+                onChange={(e) => setEditAddress(e.target.value)}
+              />
+            </div>
+          ) : (
+            <p onClick={() => setIsEditing(true)}>{address}</p>
           )}
         </div>
-        <Avatar className="w-24 h-24">
-          <AvatarImage alt="Profile picture" src="/placeholder.svg?height=96&width=96" />
-        </Avatar>
       </div>
-      <div className="mt-8">
-        <h2 className="text-xl font-semibold mb-2" onClick={() => setIsEditing(true)}>SUMMARY</h2>
+      <div className="mt-8 cursor-pointer">
+        {isEditing ? (
+          <div>
+            <input
+              type="text"
+              className="text-xl font-semibold mb-2"
+              value={editSummaryTitle}
+              onChange={(e) => setEditSummaryTitle(e.target.value)}
+            />
+          </div>
+        ) : (
+          <h2 className="text-xl font-semibold mb-2" onClick={() => setIsEditing(true)}>{summaryTitle}</h2>
+        )}
         {isEditing ? (
           <div>
             <textarea
@@ -172,72 +294,181 @@ export default function AppRes({ selectedTemplate }) {
         )}
       </div>
       <div className="mt-8">
-        <h2 className="text-xl font-semibold mb-2">EXPERIENCE</h2>
-        <div className="mb-4">
-          <h3 className="text-lg font-semibold">Founder | Magical Resume |San Francisco, California, United States| 2022-/ Present</h3>
-          <ul className="text-sm list-disc pl-4">
-            <li>
-              Collaborated with key stakeholders in Supply Chain, Marketing, Site Merchandising, and Affiliates to consistently
-              achieve operational goals and drive growth opportunities for Magical Resume
-            </li>
-            <li>
-              Led two product teams focused on algorithmic pricing and business intelligence, utilizing GPT3 and AI technologies
-              to enhance resume writing software capabilities
-            </li>
-            <li>
-              Oversaw a $10+ million P&L for beauty subcategories, increasing revenue by 30% YoY through strategic product
-              pricing, positioning, and roadmap planning
-            </li>
-            <li>
-              Evaluated promotional plans to ensure alignment with product line strategy while effectively conveying the
-              message to target audiences
-            </li>
-            <li>
-              Gained hands-on experience in product management by working closely with AR designers, engineers, data
-              scientists, and user researchers
-            </li>
-          </ul>
-        </div>
-        <div className="mb-4">
-          <h3 className="text-lg font-semibold">Product Manager | Claimyr |San Francisco, California, United States| 2021-/2021</h3>
-          <ul className="text-sm list-disc pl-4">
-            <li>
-              Spearheaded go-to-market initiatives across digital programs for Claimyr, executing integrated marketing plans and
-              measuring results (ROI, conversion) using ATS keywords and API integration
-            </li>
-            <li>
-              Designed and implemented A/B tests that improved conversion rates by optimizing user experience based on
-              quantitative analysis and statistical insights
-            </li>
-            <li>
-              Managed all aspects of in-life products including customer feedback gathering, requirements gathering, spec
-              writing, wireframes creation, workflows development, cross-functional coordination
-            </li>
-            <li>
-              Coordinated cross-functional teams to ensure alignment on project goals while fostering effective communication
-              skills among team members
-            </li>
-            <li>
-              Empowered team members by providing transparency between measurable outcomes, plans delivered work while
-              coaching them towards success
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h3 className="text-lg font-semibold">Product Manager | Network Operation Telecom CO. |Riyadh, Saudi Arabia| 2019-/2021</h3>
-          <ul className="text-sm list-disc pl-4">
-            <li>
-              Owned the product roadmap for Network Operation Telecom CO., executing product strategy in alignment with
-              market trends and competitive landscape analysis
-            </li>
-            <li>
-              Collaborated with the team to increase knowledge sharing while accelerating development environment
-              automation through agile practices implementation
-            </li>
-            <li>
-              Developed a solid understanding of the company&#39;s roadmap and overall product strategy while demonstrating
-            </li>
-          </ul>
+        {isEditing ? (
+          <div>
+            <input
+              type="text"
+              className="text-xl font-semibold mb-2"
+              value={editExperienceTitle}
+              onChange={(e) => setEditExperienceTitle(e.target.value)}
+              onClick={() => setIsEditing(true)}
+            />
+          </div>
+        ) : (
+          <h2 className="text-xl font-semibold mb-2" onClick={() => setIsEditing(true)}>{experienceTitle}</h2>
+        )}
+<div className="mb-4">
+  {experienceItems.map((item, index) => (
+    <div key={index}>
+      <div className="flex items-center mb-2">
+        {isEditing ? (
+          <>
+<div className="flex items-center w-auto min-w-[20px] max-w-100px]">
+
+<input
+  type="text"
+  className="mr-2 w-auto min-w-[20px] max-w-[200px]"
+  style={{ width: editExperienceItems[index].positionTitle ? 'auto' : '20px' }}
+  value={editExperienceItems[index].positionTitle}
+  onChange={(e) => {
+    const updatedItems = [...editExperienceItems];
+    updatedItems[index].positionTitle = e.target.value;
+    setEditExperienceItems(updatedItems);
+  }}
+/>
+<input
+  type="text"
+  className="mr-2 w-auto min-w-[30px] max-w-[300px]"
+  style={{ width: editExperienceItems[index].companyName ? 'auto' : '20px' }}
+  value={editExperienceItems[index].companyName}
+  onChange={(e) => {
+    const updatedItems = [...editExperienceItems];
+    updatedItems[index].companyName = e.target.value;
+    setEditExperienceItems(updatedItems);
+  }}
+/>
+<input
+  type="text"
+  className="mr-2 w-auto min-w-[20px] max-w-[200px]"
+  style={{ width: editExperienceItems[index].location ? 'auto' : '20px' }}
+  value={editExperienceItems[index].location}
+  onChange={(e) => {
+    const updatedItems = [...editExperienceItems];
+    updatedItems[index].location = e.target.value;
+    setEditExperienceItems(updatedItems);
+  }}
+/>
+</div>
+<div className="flex items-center w-auto min-w-[20px] max-w-100px]">
+
+<input
+  type="text"
+  className="mr-2 w-auto min-w-[20px] max-w-[200px]"
+  style={{ width: editExperienceItems[index].from ? 'auto' : '20px' }}
+  value={editExperienceItems[index].from}
+  onChange={(e) => {
+    const updatedItems = [...editExperienceItems];
+    updatedItems[index].from = e.target.value;
+    setEditExperienceItems(updatedItems);
+  }}
+/>
+  <input
+    type="text"
+    className="mr-2 w-auto min-w-[20px] max-w-100px]"
+    style={{ width: editExperienceItems[index].to ? 'auto' : '20px' }}
+    value={editExperienceItems[index].to}
+    onChange={(e) => {
+      const updatedItems = [...editExperienceItems];
+      updatedItems[index].to = e.target.value;
+      setEditExperienceItems(updatedItems);
+    }}
+  />
+  <label className="flex items-center">
+    <input
+      type="checkbox"
+      className="mr-2 w-auto min-w-[20px] max-w-[100px]"
+      checked={editExperienceItems[index].to === 'Present'}
+      onChange={(e) => {
+        const updatedItems = [...editExperienceItems];
+        updatedItems[index].to = e.target.checked ? 'Present' : '';
+        setEditExperienceItems(updatedItems);
+      }}
+    />
+    Present
+  </label>
+</div>
+          </>
+        ) : (
+          <>
+            <span
+              className="mr-2 font-bold cursor-pointer"
+              onClick={() => {
+                setIsEditing(true);
+                setEditExperienceItems(experienceItems.map(item => ({ ...item })));
+              }}
+            >
+              {item.positionTitle}
+            </span>
+            <span
+              className="mr-2 cursor-pointer"
+              onClick={() => {
+                setIsEditing(true);
+                setEditExperienceItems(experienceItems.map(item => ({ ...item })));
+              }}
+            >
+              {item.companyName}
+            </span>
+            <span
+              className="mr-2 cursor-pointer"
+              onClick={() => {
+                setIsEditing(true);
+                setEditExperienceItems(experienceItems.map(item => ({ ...item })));
+              }}
+            >
+              {item.location}
+            </span>
+            <span
+              className="mr-2 cursor-pointer"
+              onClick={() => {
+                setIsEditing(true);
+                setEditExperienceItems(experienceItems.map(item => ({ ...item })));
+              }}
+            >
+              {item.from}
+            </span>
+            <span
+              className="cursor-pointer"
+              onClick={() => {
+                setIsEditing(true);
+                setEditExperienceItems(experienceItems.map(item => ({ ...item })));
+              }}
+            >
+              {item.to === 'Present' ? 'Present' : item.to}
+            </span>
+          </>
+        )}
+      </div>
+
+              {item.responsibilities && item.responsibilities.length > 0 && (
+                <>
+                  {isEditing ? (
+                    <ul className="text-sm list-disc pl-4">
+                      {editExperienceItems[index].responsibilities.map((responsibility, responsibilityIndex) => (
+                        <li key={responsibilityIndex}>
+                          <input
+                            type="text"
+                            value={responsibility}
+                            onChange={(e) => {
+                              const updatedItems = [...editExperienceItems];
+                              updatedItems[index].responsibilities[responsibilityIndex] = e.target.value;
+                              setEditExperienceItems(updatedItems);
+                            }}
+                            onClick={() => setIsEditing(true)}
+                          />
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <ul className="text-sm list-disc pl-4" onClick={() => setIsEditing(true)}>
+                      {item.responsibilities.map((responsibility, responsibilityIndex) => (
+                        <li key={responsibilityIndex}>{responsibility}</li>
+                      ))}
+                    </ul>
+                  )}
+                </>
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </div>
