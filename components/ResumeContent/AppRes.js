@@ -216,7 +216,7 @@ export default function AppRes({ selectedTemplate }) {
 <div className="flex text-xs mt-2">
   {isEditing ? (
     <div className="flex items-center">
-      <FontAwesomeIcon icon={faEnvelope} className="h-4 w-4 mr-1" />
+      <FontAwesomeIcon icon={faEnvelope} className="h-4 w-4 mr-1" style={{ color: selectedTemplate }}  />
       <input
         type="text"
         className="mr-2"
@@ -226,14 +226,14 @@ export default function AppRes({ selectedTemplate }) {
     </div>
   ) : (
     <div className="flex items-center mr-2 cursor-pointer" onClick={() => setIsEditing(true)}>
-      <FontAwesomeIcon icon={faEnvelope} className="h-4 w-4 mr-1" />
+      <FontAwesomeIcon icon={faEnvelope} className="h-4 w-4 mr-1" style={{ color: selectedTemplate }}  />
       <p>{email}</p>
     </div>
   )}
 
   {isEditing ? (
     <div className="flex items-center">
-      <FontAwesomeIcon icon={faPhone} className="h-4 w-4 mr-1" />
+      <FontAwesomeIcon icon={faPhone} className="h-4 w-4 mr-1" style={{ color: selectedTemplate }} />
       <input
         type="text"
         className="mr-2"
@@ -243,14 +243,14 @@ export default function AppRes({ selectedTemplate }) {
     </div>
   ) : (
     <div className="flex items-center mr-2 cursor-pointer" onClick={() => setIsEditing(true)}>
-      <FontAwesomeIcon icon={faPhone} className="h-4 w-4 mr-1" />
+      <FontAwesomeIcon icon={faPhone} className="h-4 w-4 mr-1" style={{ color: selectedTemplate }}  />
       <p>{phone}</p>
     </div>
   )}
 
 {isEditing ? (
   <div className="flex items-center">
-    <FontAwesomeIcon icon={faLinkedin} className="h-4 w-4 mr-1" />
+    <FontAwesomeIcon icon={faLinkedin} className="h-4 w-4 mr-1" style={{ color: selectedTemplate }} />
     <input
       type="text"
       className="mr-2"
@@ -260,7 +260,7 @@ export default function AppRes({ selectedTemplate }) {
   </div>
 ) : (
   <div className="flex items-center mr-2 cursor-pointer" onClick={() => setIsEditing(true)}>
-    <FontAwesomeIcon icon={faLinkedin} className="h-4 w-4 mr-1" />
+    <FontAwesomeIcon icon={faLinkedin} className="h-4 w-4 mr-1" style={{ color: selectedTemplate }} />
     <p>{linkedin}</p>
   </div>
 )}
@@ -268,7 +268,7 @@ export default function AppRes({ selectedTemplate }) {
 
 {isEditing ? (
     <div className="flex items-center">
-      <FontAwesomeIcon icon={faTwitter} className="h-4 w-4 mr-1" />
+      <FontAwesomeIcon icon={faTwitter} className="h-4 w-4 mr-1" style={{ color: selectedTemplate }} />
       <input
         type="text"
         className="mr-2"
@@ -278,14 +278,14 @@ export default function AppRes({ selectedTemplate }) {
     </div>
   ) : (
     <div className="flex items-center mr-2 cursor-pointer" onClick={() => setIsEditing(true)}>
-      <FontAwesomeIcon icon={faTwitter} className="h-4 w-4 mr-1" />
+      <FontAwesomeIcon icon={faTwitter} className="h-4 w-4 mr-1" style={{ color: selectedTemplate }}  />
       <p>{twitter}</p>
     </div>
   )}
 
   {isEditing ? (
     <div className="flex items-center">
-      <FontAwesomeIcon icon={faLocationArrow} className="h-4 w-4 mr-1" />
+      <FontAwesomeIcon icon={faLocationArrow} className="h-4 w-4 mr-1" style={{ color: selectedTemplate }} />
       <input
         type="text"
         value={editAddress}
@@ -294,7 +294,7 @@ export default function AppRes({ selectedTemplate }) {
     </div>
   ) : (
     <div className="flex items-center cursor-pointer" onClick={() => setIsEditing(true)}>
-      <FontAwesomeIcon icon={faLocationArrow} className="h-4 w-4 mr-1" />
+      <FontAwesomeIcon icon={faLocationArrow} className="h-4 w-4 mr-1" style={{ color: selectedTemplate }}/>
       <p>{address}</p>
     </div>
   )}
